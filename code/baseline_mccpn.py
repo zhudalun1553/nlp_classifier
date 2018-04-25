@@ -3,7 +3,7 @@
 from sklearn.model_selection import train_test_split
 from collections import Counter
 
-NLP_DATA = "../corpus/cleaned.txt"
+NLP_DATA = "../corpus/43000.txt"
 
 def baseline(file):
     X = []
