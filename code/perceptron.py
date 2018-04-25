@@ -61,8 +61,8 @@ def load_file(file):
             X.append(tokens[0])
 
             #baseline
-            y.append(tokens[1])
-            classifier_set.add(tokens[1])
+            # y.append(tokens[1])
+            # classifier_set.add(tokens[1])
 
             #bidirectional
             cls = tokens[1].split()
