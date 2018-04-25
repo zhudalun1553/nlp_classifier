@@ -59,8 +59,16 @@ def load_file(file):
             tokens = line.split("\t")
             assert 2 == len(tokens)
             X.append(tokens[0])
+
+            #baseline
             y.append(tokens[1])
             classifier_set.add(tokens[1])
+
+            #bidirectional
+            cls = tokens[1].split()
+            y.append(cls)
+            classifier_set.add(cls[0])
+
 
     X_train_val, X_test, y_train_val, y_test = train_test_split(X, y, test_size=0.2)
     X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size=0.2)
@@ -94,6 +102,10 @@ class Perceptron:
             updates = 0
             train_zip = list(zip(train_docs, train_labels))
             for doc, label in train_zip:
+
+                #bidirectional
+                label = label[0]
+
                 pred = self.predict(doc)
                 if pred != label:
                     updates += 1
