@@ -18,6 +18,12 @@ python code/perceptron.py 100
 ~~~
 100 is number of iteration, adjust it to any reasonable number.
 
+# run Bidirectional Perceptron model
+~~~
+python code/perceptron_bidirectional.py 100
+~~~
+100 is number of iteration, adjust it to any reasonable number.
+
 # run SVM 
 ~~~
 python code/SVM.py
