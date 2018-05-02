@@ -18,7 +18,8 @@ from sklearn.model_selection import train_test_split
 from evaluation import Eval
 
 BIAS_FEATURE = "^bias"
-NLP_DATA = "../corpus/43000.txt"
+NLP_DATA = "./corpus/43000.txt"
+BIDIRECTIONAL_DATA = "./corpus/bidirectional.txt"
 
 def extract_feats(sentence):
     """
@@ -101,10 +102,10 @@ class Perceptron:
         for i in range(self.MAX_ITERATIONS):
             updates = 0
             train_zip = list(zip(train_docs, train_labels))
-            for doc, label in train_zip:
+            for doc, labels in train_zip:
 
                 #bidirectional
-                label = label[0]
+                label = labels[0]
 
                 pred = self.predict(doc)
                 if pred != label:
@@ -165,12 +166,12 @@ class Perceptron:
 
 def get_classifier_of_noun(X_train, y_train):
     classifier_of_noun = {}
-    for sentence, classifier in zip(X_train, y_train):
+    for sentence, classifiers in zip(X_train, y_train):
         words = sentence.split()
         noun = words[-1]
         if noun not in classifier_of_noun:
             classifier_of_noun[noun] = set()
-        classifier_of_noun[noun].add(classifier)
+        classifier_of_noun[noun].add(classifiers[0])
     ret = {}
     for noun in classifier_of_noun:
         ret[noun] = list(classifier_of_noun[noun])

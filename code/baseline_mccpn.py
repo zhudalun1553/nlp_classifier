@@ -3,7 +3,7 @@
 from sklearn.model_selection import train_test_split
 from collections import Counter
 
-NLP_DATA = "../corpus/43000.txt"
+NLP_DATA = "./corpus/43000.txt"
 
 def baseline(file):
     X = []
@@ -28,6 +28,7 @@ def baseline(file):
             classifier_of_noun[noun] = Counter()
         c_counter[classifier] += 1
         classifier_of_noun[noun][classifier] += 1
+    #print(classifier_of_noun)
     ge = c_counter.most_common(1)[0]
     print("the most common classifier is {}".format(ge[0]))
     count_train = 0
