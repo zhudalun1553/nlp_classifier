@@ -171,7 +171,9 @@ def get_classifier_of_noun(X_train, y_train):
         noun = words[-1]
         if noun not in classifier_of_noun:
             classifier_of_noun[noun] = set()
+
         classifier_of_noun[noun].add(classifiers[0])
+
     ret = {}
     for noun in classifier_of_noun:
         ret[noun] = list(classifier_of_noun[noun])
