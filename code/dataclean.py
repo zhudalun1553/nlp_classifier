@@ -31,12 +31,13 @@ if __name__ == '__main__':
     dict = get_noun_classifier_count(NEW_DATA)
     multiple_count = 0
     single_count = 0
-    for noun in dict:
-        if len(dict[noun]) > 1:
-            print("{}->{}".format(noun, dict[noun]))
-            multiple_count += 1
-        else:
-            single_count += 1
+    with open("output.txt", mode='w') as f:
+        for noun in dict:
+            if len(dict[noun]) > 1:
+                f.write("{}->{}\n".format(noun, dict[noun]))
+                multiple_count += 1
+            else:
+                single_count += 1
 
-    print(multiple_count)
-    print(single_count)
+        f.write("noun with multiple classifiers: {}\n".format(multiple_count))
+        f.write("noun with single classifiers:{}\n".format(single_count))
